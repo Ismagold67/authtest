@@ -9,6 +9,7 @@ body{
     align-items: center;
     justify-content: center;
     height: 100vh;
+    background-image: url('https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
 }
 .popup{
     display: flex;
@@ -16,6 +17,10 @@ body{
     justify-content: center;
     flex-direction: column;
     display: none;
+    background-color: #fff;
+    padding: 18px;
+    box-shadow: 1px 2px 2px black;
+    border-radius: 15px;
 }
 .card{
     width: 80%;

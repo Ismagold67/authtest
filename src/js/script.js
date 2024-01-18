@@ -17,20 +17,26 @@ const guests = []
 
 getDocs(collection(db, 'games'))
   .then(querySnapshot => {
-    const authGuest = []
+    let name = ''
+    const authId = []
     const otherNamesGuest = []
     const inp = document.getElementById('meuInput').value 
     querySnapshot.docs.forEach(doc => {
-      const nameInput = doc.data().name;
+      const idInput = doc.data().id;
       const others = doc.data().otherNames;
-      authGuest.push(nameInput)
+      authId.push(idInput)
       otherNamesGuest.push(others)
+      if(inp.includes(idInput)){
+        name = doc.data().name
+      }
+      console.log("sentro dofor ", name)
     })
-
-    for(let i = 0; i < authGuest.length; i++){
-        if(inp.includes(authGuest[i])){
-            const index = authGuest.indexOf(authGuest[i])
+    console.log("fora do bloco", name)
+    for(let i = 0; i < authId.length; i++){
+        if(inp.includes(authId[i])){
+            const index = authId.indexOf(authId[i])
             guests.push(otherNamesGuest[index])
+            guests[0].unshift(name)
         }
     }
   })
@@ -45,8 +51,12 @@ setTimeout(
 
 let count = 0
 function x(){
+  const carde = document.querySelector('.carde')
   count++;
-  document.querySelector('.carde').style.backgroundPosition=count+"px";
+  if(carde){
+    carde.style.backgroundPosition=count+"px";
+  }
+  document.querySelector('body').style.backgroundPosition=count+"px";
 }
  
 
@@ -63,13 +73,12 @@ const receiveList = document.querySelector('.receiveList')
         if (Array.isArray(array) && array.length > 0) {
             const lista = document.createElement('ul');
             lista.setAttribute('class', 'list-group')
-            array[0].unshift(value.split(".")[0])
             let count = 0
             array[0].forEach(item => {
               count++
               const listItem = document.createElement('li');
               listItem.setAttribute('class','list-group-item')
-              listItem.textContent = `${count} - ${item}`;
+              listItem.textContent = `${count} - ${item.replace(item[0], item[0].toUpperCase())}`;
               lista.appendChild(listItem);
             });
       
