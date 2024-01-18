@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
 import { getFirestore, collection ,getDocs, addDoc, serverTimestamp, doc, deleteDoc /*setDoc*/, onSnapshot, updateDoc } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore.js";
+import { countDown } from "./countdown.js";
 const firebaseConfig = {
   apiKey: "AIzaSyAbDNHc72qZ4mSOZYOP5Yfe56qF8RAzNtU",
   authDomain: "testing-firebase-ed8b9.firebaseapp.com",
@@ -9,6 +10,7 @@ const firebaseConfig = {
   appId: "1:204071893005:web:ee3ec992f5dc603cb4fd44",
   measurementId: "G-K4B4KCL6HZ"
 };
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 const guests = []
@@ -28,11 +30,9 @@ getDocs(collection(db, 'games'))
     for(let i = 0; i < authGuest.length; i++){
         if(inp.includes(authGuest[i])){
             const index = authGuest.indexOf(authGuest[i])
-            console.log(authGuest[i])
             guests.push(otherNamesGuest[index])
         }
     }
-    console.log(otherNamesGuest[0])
   })
   .catch(console.log);
 
@@ -43,13 +43,20 @@ setTimeout(
 
 }), 5000)
 
+let count = 0
+function x(){
+  count++;
+  document.querySelector('.carde').style.backgroundPosition=count+"px";
+}
+ 
+
 const receiveList = document.querySelector('.receiveList')
 
   function renderizarLista() {
     const value = document.getElementById('meuInput').value 
     const enterPass = window.location.pathname.split('/').pop() + '358902'
     const array = guests
-    console.log(array[0])
+    console.log("guests", array)
     if(value != enterPass){
         alert('Senha Inválida')
     } else {
@@ -77,6 +84,8 @@ const receiveList = document.querySelector('.receiveList')
     }
   }
   receiveList.addEventListener('click', renderizarLista)
- 
+countDown()
+setInterval(x, 15);
+
 
 

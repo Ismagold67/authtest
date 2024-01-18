@@ -15,4 +15,22 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    display: none;
+}
+.card{
+    width: 80%;
+    background-color: #ffffff89;
+}
+.carde{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    font-weight: 700;
 }
