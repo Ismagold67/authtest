@@ -29,9 +29,7 @@ getDocs(collection(db, 'games'))
       if(inp.includes(idInput)){
         name = doc.data().name
       }
-      console.log("sentro dofor ", name)
     })
-    console.log("fora do bloco", name)
     for(let i = 0; i < authId.length; i++){
         if(inp.includes(authId[i])){
             const index = authId.indexOf(authId[i])

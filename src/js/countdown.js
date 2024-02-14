@@ -3,7 +3,7 @@ export function countDown(){
 
     const interval = setInterval(() => {
     const currentDate = new Date().getTime();
-    const timeDifference = targetDate - currentDate
+    const timeDifference = 0//targetDate - currentDate
 
     if (timeDifference <= 0) {
         clearInterval(interval);
