@@ -62,7 +62,7 @@ const receiveList = document.querySelector('.receiveList')
 
   function renderizarLista() {
     const value = document.getElementById('meuInput').value 
-    const enterPass = window.location.pathname.split('/').pop() + '358902'
+    const enterPass = window.location.pathname.split('/').pop() + '33'
     const array = guests
     console.log("guests", array)
     if(value != enterPass){
